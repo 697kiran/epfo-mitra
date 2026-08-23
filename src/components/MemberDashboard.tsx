@@ -1,0 +1,16 @@
+"use client";
+
+import React from "react";
+import { ArrowRight, BriefcaseBusiness, WalletCards } from "lucide-react";
+import { RejectionScenario } from "@/types";
+import { MockDataBadge } from "./MockDataBadge";
+
+export function MemberDashboard({ scenario, onContinue }: { scenario: RejectionScenario; onContinue: () => void }) {
+  const balance = scenario.memberAccounts.reduce((sum, account) => sum + account.employeeShare + account.employerShare, 0);
+  return <main className="min-h-screen bg-[var(--ink)] px-4 py-8 text-white sm:px-6"><div className="mx-auto max-w-6xl">
+    <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[var(--line)] pb-7"><div><MockDataBadge label="Simulated data" /><h1 className="mt-4 text-3xl font-black">Welcome, {scenario.aadhaarName}</h1><p className="mt-2 text-sm text-[var(--muted)]">Your mock passbook snapshot is ready for review.</p></div><div className="text-right text-xs text-[var(--muted)]">UAN<br /><span className="font-mono text-[var(--text)]">{scenario.uan}</span></div></div>
+    <div className="mt-8 grid gap-4 sm:grid-cols-3"><div className="border border-[var(--line)] bg-[var(--panel)] p-5"><WalletCards className="h-5 w-5 text-[var(--mint)]" /><p className="mt-5 text-xs text-[var(--muted)]">Total PF balance</p><p className="mt-1 text-2xl font-black">₹{balance.toLocaleString("en-IN")}</p></div><div className="border border-[var(--line)] bg-[var(--panel)] p-5"><BriefcaseBusiness className="h-5 w-5 text-[var(--sky)]" /><p className="mt-5 text-xs text-[var(--muted)]">Member accounts</p><p className="mt-1 text-2xl font-black">{scenario.memberAccounts.length}</p></div><div className="border border-[var(--line)] bg-[var(--panel)] p-5"><p className="text-xs text-[var(--muted)]">Claim intent</p><p className="mt-5 text-xl font-black">{(scenario.claimIntent || "FINAL_SETTLEMENT").replace("_", " ")}</p></div></div>
+    <section className="mt-8 border border-[var(--line)] bg-[var(--panel)]"><div className="border-b border-[var(--line)] p-5"><h2 className="font-black">Passbook history</h2><p className="mt-1 text-xs text-[var(--muted)]">Employer records and balances from this demo profile.</p></div><div className="divide-y divide-[var(--line)]">{scenario.memberAccounts.map((account) => <div key={account.memberId} className="grid gap-3 p-5 sm:grid-cols-[1.4fr_1fr_1fr_auto] sm:items-center"><div><p className="font-bold">{account.establishmentName}</p><p className="mt-1 font-mono text-[11px] text-[var(--muted)]">{account.memberId}</p></div><p className="text-xs text-[var(--muted)]">{account.joiningDate} → {account.exitDate || "Exit pending"}</p><p className="text-sm font-bold">₹{(account.employeeShare + account.employerShare).toLocaleString("en-IN")}</p><span className="w-fit border border-[var(--line)] px-2 py-1 text-[11px] text-[var(--muted)]">{account.isTransferred ? "Transferred" : "Separate account"}</span></div>)}</div></section>
+    <button type="button" onClick={onContinue} className="mt-7 flex items-center gap-2 bg-[var(--mint)] px-5 py-3 text-sm font-black text-[var(--ink)] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--mint)]">Run claim diagnosis <ArrowRight className="h-4 w-4" /></button>
+  </div></main>;
+}

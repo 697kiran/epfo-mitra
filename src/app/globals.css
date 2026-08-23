@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07111f;
+  --foreground: #f4f8fb;
+  --ink: #07111f;
+  --navy: #0b1b2b;
+  --panel: #102538;
+  --line: #244057;
+  --text: #f4f8fb;
+  --muted: #9eb3c4;
+  --mint: #6ee7b7;
+  --sky: #7dd3fc;
+  --warning: #f6c667;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--mint);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print stylesheet optimization for Action Slip */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  #printable-action-slip,
+  #printable-action-slip * {
+    visibility: visible;
+  }
+  
+  #printable-action-slip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    color: black !important;
+  }
+}
+
+@media print {
+  body.print-recovery-pack * {
+    visibility: hidden;
+  }
+
+  body.print-recovery-pack #recovery-pack,
+  body.print-recovery-pack #recovery-pack * {
+    visibility: visible;
+  }
+
+  body.print-recovery-pack #recovery-pack {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    border: none !important;
+    background: white !important;
+    color: black !important;
+  }
+}

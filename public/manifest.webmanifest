@@ -1,0 +1,16 @@
+{
+  "name": "EPFO Mitra - Citizen Claim Guide",
+  "short_name": "EPFO Mitra",
+  "description": "Synthetic, offline-friendly EPFO claim diagnosis prototype.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#6ee7b7",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
