@@ -53,7 +53,14 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
         <section className="p-7 sm:p-10">
           <div className="mb-7 flex items-center gap-2 text-sm font-bold text-[var(--mint)]"><ShieldCheck className="h-4 w-4" /> Demo access</div>
           <h2 className="text-2xl font-black">Sign in to EPFO Mitra</h2>
-          <p className="mt-2 text-sm text-[var(--muted)]">Enter the demo credentials supplied with this prototype. No real EPFO credentials are accepted.</p>
+          <p className="mt-2 text-sm text-[var(--muted)]">Use these fictional demo credentials. No real EPFO credentials are accepted.</p>
+          <div className="mt-4 border border-[var(--mint)]/30 bg-[var(--mint)]/5 p-3 text-xs text-[var(--text)]">
+            <p className="font-black text-[var(--mint)]">Demo credentials</p>
+            <p className="mt-1 font-mono">Case 1: 100100100001 / mitra123</p>
+            <p className="font-mono">Case 2: 100100100002 / mitra123</p>
+            <p className="font-mono">Case 3: 100100100003 / mitra123</p>
+            <p className="font-mono">Case 4: 100100100004 / mitra123</p>
+          </div>
           <form onSubmit={submit} className="mt-7 space-y-4">
             <label className="block text-xs font-bold uppercase tracking-wider text-[var(--muted)]">UAN Number<input required inputMode="numeric" maxLength={12} value={uan} onChange={(event) => setUan(event.target.value.replace(/\D/g, ""))} className="mt-2 w-full border border-[var(--line)] bg-[var(--ink)] px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--mint)] focus:ring-2 focus:ring-[var(--mint)]/30" placeholder="Enter 12-digit UAN" /></label>
             <label className="block text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Password<div className="relative mt-2"><LockKeyhole className="absolute left-3 top-3.5 h-4 w-4 text-[var(--muted)]" /><input required type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="w-full border border-[var(--line)] bg-[var(--ink)] py-3 pl-10 pr-4 text-sm text-white outline-none transition focus:border-[var(--mint)] focus:ring-2 focus:ring-[var(--mint)]/30" placeholder="Enter demo password" /></div></label>

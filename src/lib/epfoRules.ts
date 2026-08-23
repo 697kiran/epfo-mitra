@@ -44,7 +44,7 @@ export function getMonthsBetween(startDateStr: string, endDateStr: string): numb
  */
 export function calculateTotalContinuousServiceMonths(
   accounts: MemberAccount[],
-  asOfDate = "2026-08-23"
+  asOfDate = new Date().toISOString().split("T")[0]
 ): number {
   if (!accounts || accounts.length === 0) return 0;
   const intervals = [...accounts]
@@ -479,7 +479,7 @@ function inferExitDateBefore(nextJoiningDate?: string): string {
  */
 export function computeDiagnosis(
   scenario: RejectionScenario,
-  asOfDate = "2026-08-23"
+  asOfDate = new Date().toISOString().split("T")[0]
 ): DiagnosisResult {
   const rootCauses: RootCause[] = [];
   const sourceRuleIds: string[] = [];
