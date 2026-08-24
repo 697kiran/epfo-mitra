@@ -19,6 +19,7 @@ import { MemberDashboard } from "@/components/MemberDashboard";
 import { ClaimClosure } from "@/components/ClaimClosure";
 import { CitizenSupportTools } from "@/components/CitizenSupportTools";
 import { ClaimRecoveryPack } from "@/components/ClaimRecoveryPack";
+import { RecoveryOutcomeBanner } from "@/components/RecoveryOutcomeBanner";
 import {
   ShieldCheck,
   Search,
@@ -298,6 +299,11 @@ export default function Home() {
 
         {/* Results Area */}
         <section id="diagnosis" className="space-y-8">
+          <RecoveryOutcomeBanner
+            diagnosis={diagnosis}
+            onContinue={() => setJourneyStage("closure")}
+          />
+
           {/* 4. Diagnostic Card */}
           <DiagnosticCard
             diagnosis={diagnosis}
