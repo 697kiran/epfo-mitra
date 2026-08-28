@@ -294,6 +294,9 @@ export default function Home() {
             </button>
           </div>
           <p className="text-[11px] text-slate-500">For this prototype, enter only a synthetic error message. Do not enter Aadhaar, PAN, OTP, bank, or employer-sensitive information.</p>
+          <p className="border-l-2 border-sky-400/50 pl-3 text-[11px] leading-5 text-sky-200/80">
+            This demo recognizes common EPF rejection patterns through four guided cases. Unrecognized errors may require official EPFO assistance; a production version would use a larger, versioned rule library.
+          </p>
           {searchError && <p role="alert" className="border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-xs text-amber-100">{searchError}</p>}
         </section>
 
@@ -403,6 +406,9 @@ export default function Home() {
                   </li>
                   <li>
                     <strong>Offline Resilience:</strong> If LLM is unreachable or no API key is provided, pre-audited bilingual templates ensure 100% functionality.
+                  </li>
+                  <li>
+                    <strong>Prototype Scope:</strong> The four guided cases demonstrate a scalable pattern library; they are not a complete catalogue of every EPFO rejection.
                   </li>
                 </ul>
               </div>
